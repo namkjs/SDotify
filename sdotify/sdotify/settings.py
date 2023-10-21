@@ -73,19 +73,19 @@ WSGI_APPLICATION = 'sdotify.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sdotify',
-        'USER': 'root',
-        'HOST': 'localhost',
-        'PASSWORD': '123456',
-        'PORT': '3306'
-
+        'NAME': os.environ.get('NAME'),
+        'USER': os.environ.get('USER'),
+        'HOST': os.environ.get('HOST'),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'PORT': os.environ.get('PORT')
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 

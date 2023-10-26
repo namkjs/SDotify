@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login or Sign Up</title>
+    <link href='https://fonts.googleapis.com/css?family=Lalezar' rel='stylesheet'>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="icon" href="./assets/favicon.png">
+    <link href="https://fonts.cdnfonts.com/css/geometric-sans-serif-v1" rel="stylesheet">
 </head>
 
 <body>
@@ -25,78 +27,99 @@
                 </svg>
             </div>
         </div>
-        <div class="sc-giYglK ggrwSq">
-            <div class="sc-ezbkAF gEKFis">
-                <div data-testid="login-container" class="sc-gsDKAQ kdQBSg">
-                    <button data-testid="facebook-login" class="Button-y0gtbx-0 hpTULc sc-fFeiMQ kiLgbd fb--btn">
-                        <p class="Type__TypeElement-goli3j-0 dmuHFl sc-hKwDye sc-jrQzAO sc-kDTinF eKDPqH hctigt kjwvkn">
-                            <svg role="img" focusable="false" height="24" width="24" style="color: white">
-                                <path data-name="White"
-                                    d="M20 3H4a1 1 0 00-1 1v16a1 1 0 001 1h8.62v-7h-2.35v-2.69h2.35v-2a3.27 3.27 0 013.49-3.59 19.25 19.25 0 012.1.11v2.43h-1.44c-1.13 0-1.35.54-1.35 1.32v1.73h2.69L17.76 14h-2.34v7H20a1 1 0 001-1V4a1 1 0 00-1-1z"
-                                    fill="#181818"></path>
-                            </svg>Continue with Facebook
-                        </p>
-                    </button> <button data-testid="facebook-login"
-                        class="Button-y0gtbx-0 hpTULc sc-fFeiMQ kiLgbd apple--black">
-                        <p class="Type__TypeElement-goli3j-0 dmuHFl sc-hKwDye sc-jrQzAO sc-kDTinF eKDPqH hctigt kjwvkn">
-                            <i class="fa-brands fa-apple"></i>Continue with Apple
-                        </p>
-                    </button><button data-testid="facebook-login" class="Button-y0gtbx-0 hpTULc sc-fFeiMQ kiLgbd">
-                        <p class="Type__TypeElement-goli3j-0 dmuHFl sc-hKwDye sc-jrQzAO sc-kDTinF eKDPqH hctigt kjwvkn">
-                            <i class="fa-brands fa-google"></i>Continue with Google
-                        </p>
-                    </button> <button data-testid="facebook-login" class="Button-y0gtbx-0 hpTULc sc-fFeiMQ kiLgbd">
-                        <p class="Type__TypeElement-goli3j-0 dmuHFl sc-hKwDye sc-jrQzAO sc-kDTinF eKDPqH hctigt kjwvkn">
-                            Continue with Phone Number
-                        </p>
-                    </button>
-                    <div class="sc-jRQBWg cZyagm">
-                        <hr class="sc-eCImPb gjuJVb" />
-                        <span class="Type__TypeElement-goli3j-0 VNztd sc-gKclnd cSypyy">or</span>
-                        <hr class="sc-eCImPb gjuJVb" />
+        <div class="ggrwSq">
+            <div class="gEKFis">
+                <div class="text text-1">Log in to SĐỗtify</div>
+            </div>
+            <div>
+                <div>
+                    <div>
+                        <svg class="text-2 icon" width="30" height="30" viewBox="0 0 30 30" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <circle cx="15" cy="15" r="15" fill="url(#pattern0)" />
+                            <defs>
+                                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#image0_2_13" transform="scale(0.00444444)" />
+                                </pattern>
+                                <image id="image0_2_13" width="225" height="225"
+                                    xlink:href="data:image/png;base64,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" />
+                            </defs>
+                        </svg>
+                        <h4 class="text text-2">Continue with Google</h4>
                     </div>
-                    <div data-testid="login-form">
-                        <form method="post" action="/signin" class="mb-2">
-                            <div class="Group-u9bcx5-0 UXQuB sc-iqseJM dpNkNn">
-                                <div class="LabelGroup-sc-1ibddrg-0 dUvQaU">
-                                    <label for="login-username" class="Label-sc-1c0cv3r-0 jhxAUN">
-                                        Email address or username</label>
-                                </div>
-                                <input aria-invalid="false" id="username" name="username" type="text"
-                                    placeholder="Email address or username" data-testid="login-username"
-                                    autocapitalize="off" class="Input-sc-1gbx9xe-0 iFfIqr" value="" />
-                            </div>
-                            <div class="Group-u9bcx5-0 UXQuB sc-iqseJM dpNkNn">
-                                <div class="LabelGroup-sc-1ibddrg-0 dUvQaU">
-                                    <label for="login-password" class="Label-sc-1c0cv3r-0 jhxAUN">Password</label>
-                                </div>
-                                <input aria-invalid="false" id="pass1" type="password" name="pass1"
-                                    placeholder="Password" data-testid="login-password"
-                                    class="Input-sc-1gbx9xe-0 iFfIqr" />
-                            </div>
-                            <div class="btn--kliye">
-                                <button class="btn--hunre">LOG IN</button>
-                            </div>
-
-                        </form>
-                        <a id="reset-password-link" data-testid="reset-password-link" class="Link-k8gsk-0 dvVOBw">Forgot
-                            your password?</a>
-
+                    <svg class="text text-3 rect rect-1" width="424" height="60" viewBox="0 0 424 60" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="423" height="59" rx="29.5" fill="black" stroke="white" />
+                    </svg>
+                </div>
+                <div>
+                    <div>
+                        <svg class="text-3 icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"
+                            height="30" viewBox="0 0 48 48">
+                            <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615"
+                                y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#2aa4f4"></stop>
+                                <stop offset="1" stop-color="#007ad9"></stop>
+                            </linearGradient>
+                            <path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)"
+                                d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path>
+                            <path fill="#fff"
+                                d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z">
+                            </path>
+                        </svg>
+                        <h4 class="text text-3">Continue with Facebook</h4>
                     </div>
+                    <svg class="text text-3 rect rect-2" width="424" height="60" viewBox="0 0 424 60" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="423" height="59" rx="29.5" fill="black" stroke="white" />
+                    </svg>
+                </div>
+                <div>
+                    <div>
+                        <svg class="text-4 icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"
+                            height="30" viewBox="0 0 30 30" style="fill:#FFFFFF;">
+                            <path
+                                d="M25.565,9.785c-0.123,0.077-3.051,1.702-3.051,5.305c0.138,4.109,3.695,5.55,3.756,5.55 c-0.061,0.077-0.537,1.963-1.947,3.94C23.204,26.283,21.962,28,20.076,28c-1.794,0-2.438-1.135-4.508-1.135 c-2.223,0-2.852,1.135-4.554,1.135c-1.886,0-3.22-1.809-4.4-3.496c-1.533-2.208-2.836-5.673-2.882-9 c-0.031-1.763,0.307-3.496,1.165-4.968c1.211-2.055,3.373-3.45,5.734-3.496c1.809-0.061,3.419,1.242,4.523,1.242 c1.058,0,3.036-1.242,5.274-1.242C21.394,7.041,23.97,7.332,25.565,9.785z M15.001,6.688c-0.322-1.61,0.567-3.22,1.395-4.247 c1.058-1.242,2.729-2.085,4.17-2.085c0.092,1.61-0.491,3.189-1.533,4.339C18.098,5.937,16.488,6.872,15.001,6.688z">
+                            </path>
+                        </svg>
 
-                    <hr class="sc-eCImPb gjuJVb" />
-                    <div id="sign-up-section" data-testid="signup-section">
-                        <p class="Type__TypeElement-goli3j-0 izDpgk sc-furwcr kosEEf">
-                            Don't have an account?
-                        </p>
-                        <button data-testid="facebook-login" class="Button-y0gtbx-0 hpTULc sc-fFeiMQ kiLgbd">
-                            <p
-                                class="Type__TypeElement-goli3j-0 dmuHFl sc-hKwDye sc-jrQzAO sc-kDTinF eKDPqH hctigt kjwvkn">
-                                SIGN UP FOR SPOTIFY
-                                <br>
-                            </p>
+                        <h4 class="text text-4">Continue with Apple</h4>
+                    </div>
+                    <svg class="text text-3 rect rect-3" width="424" height="60" viewBox="0 0 424 60" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="423" height="59" rx="29.5" fill="black" stroke="white" />
+                    </svg>
+                </div>
+                <div>
+                    <div>
+                        <h4 class="text text-5">Continue with phone number</h4>
+                    </div>
+                    <svg class="text text-3 rect rect-4" width="424" height="60" viewBox="0 0 424 60" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="423" height="59" rx="29.5" fill="black" stroke="white" />
+                    </svg>
+                </div>
+                <div>
+                    <form method="post" action="/signin" class="mb-2">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="text text-usn" for="username">Email or username</label> <br>
+                            <input type="text" class="form-control form-1" id="username" name="username"
+                                placeholder="Email or username" Required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text text-pass" for="pass1">Password</label> <br>
+                            <input type="password" class="form-control form-2" id="pass1" name="pass1"
+                                placeholder="Enter Your Password" Required>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="checkbox" value="lsRememberMe" id="rememberMe"> <label
+                                for="rememberMe" class="text-rmb">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <div class="text text-login">Log in</div>
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

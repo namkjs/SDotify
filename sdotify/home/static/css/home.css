@@ -1,0 +1,105 @@
+.background {
+    width: 100%;
+    background: #000;
+    height: 1920px;
+}
+
+.rect-1 {
+    /* Rectangle 35 */
+
+    position: absolute;
+    width: 310px;
+    height: 159px;
+    left: 13px;
+    top: 16px;
+
+    background: #1E1E1E;
+    border-radius: 20px;
+
+}
+
+.icon-container {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.text {
+    color: #FFF;
+    font-family: 'Lalezar';
+}
+
+.text-home {
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.text-search {
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.home {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.rect-2 {
+    /* Rectangle 34 */
+
+    position: absolute;
+    width: 310px;
+    height: 444px;
+    left: 13px;
+    top: 192px;
+
+    background: #1E1E1E;
+    border-radius: 20px;
+
+}
+
+.text-library {
+    /* Thư viện */
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+    text-align: center;
+
+
+
+}
+
+.library {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.playlist {
+}
+
+.artist {}
+
+.icon-container-1 {
+    position: absolute;
+    width: 88px;
+    height: 39px;
+    left: 26px;
+    top: 268px;
+    background: #A3A0A0;
+    border-radius: 20px;
+}

@@ -122,8 +122,8 @@ def signout(request):
     messages.success(request, "Logged Out Successfully!!")
     return redirect('home')
 
-# @login_required
-# def information(request):
-#     data = User.objects.get(username = request.user.username)
-#     return render(request, 'home/infor.html', {'data': data})
+@login_required
+def information(request):
+    data = User.objects.get(username = request.user.username)
+    return render(request, 'home/infor.html', {'data': data})
 

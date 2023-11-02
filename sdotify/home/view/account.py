@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 @login_required
 def information(request):
     data = User.objects.get(username = request.user.username)
+    print(data.dob)
     return render(request, 'home/infor.html', {'data': data})
 
 @login_required

@@ -16,36 +16,44 @@ from ..tokens import generate_token
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-def home(request):
-    return render(request, "authentication/index.html")
 
-def signup(request):
+
+def enter_email(request):
+    if request.method == "POST":
+        email = request.POST['email']
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email Already Registered! Please use a different email.")
+        else:
+            # Email is not registered, proceed to the next step
+            request.session['email'] = email  # Store the email in the session
+            return redirect('register_user')
+    return render(request, 'authentication/enter_email.html')
+
+    
+def register_user(request):
+    if 'email' not in request.session:
+        # If email is not in the session, redirect to step 1
+        return redirect('enter_email')
+
     if request.method == "POST":
         username = request.POST['username']
-        email = request.POST['email']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
         phone = request.POST['phone_number']
         dob = request.POST['dob']
-        if User.objects.filter(username=username):
-            messages.error(request, "Username already exist! Please try some other username.")
-            return redirect('home')
-        
-        if User.objects.filter(email=email).exists():
-            messages.error(request, "Email Already Registered!!")
-            return redirect('home')
-        
-        if len(username)>20:
-            messages.error(request, "Username must be under 20 charcters!!")
-            return redirect('home')
-        
-        if pass1 != pass2:
-            messages.error(request, "Passwords didn't matched!!")
-            return redirect('home')
-        myuser = User.objects.create_user(username = username, email = email, password = pass1, phone_number = phone, dob = dob)
-        myuser.is_active = False
-        myuser.save()
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists! Please try a different username.")
+        elif len(username) > 20:
+            messages.error(request, "Username must be under 20 characters.")
+        elif pass1 != pass2:
+            messages.error(request, "Passwords didn't match.")
+        else:
+            email = request.session['email']
+            myuser = User.objects.create_user(username=username, email=email, password=pass1, phone_number=phone, dob=dob)
+            myuser.is_active = False
+            myuser.save()
+            del request.session['email']  # Remove email from session
         messages.success(request, "Your Account has been created succesfully!! Please check your email to confirm your email address in order to activate your account.")
         
         # Welcome Email
@@ -109,10 +117,10 @@ def signin(request):
             login(request, user)
             fname = user.username
             # messages.success(request, "Logged In Sucessfully!!")
-            return render(request, "authentication/index.html",{"fname":username})
+            return redirect('home')
         else:
             messages.error(request, "Bad Credentials!!")
-            return redirect('home')
+            return redirect('signin')
     
     return render(request, "authentication/signin.html")
 

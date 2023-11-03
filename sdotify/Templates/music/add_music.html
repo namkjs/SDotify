@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nhập thông tin âm nhạc</title>
+</head>
+
+<body>
+    <h1>Nhập thông tin âm nhạc</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ artist_form.as_p }}
+        {{ album_form.as_p }}
+        {{ song_form.as_p }}
+        <button type="submit">Lưu</button>
+    </form>
+</body>
+
+</html>

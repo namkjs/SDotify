@@ -19,13 +19,16 @@ class CustomUserManager(UserManager):
 class User(AbstractUser):
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
-    phone_number = models.IntegerField()
+    phone_number = models.IntegerField(default = 0)
     dob = models.DateField()
     gender = models.IntegerField(default = 0)
     is_active = models.BooleanField(default = False)
     last_login = None
-    is_staff = None
-    is_superuser = None
+    is_superuser = models.BooleanField(default = True)
     first_name = None
     last_name = None
     objects = CustomUserManager()
+    is_staff = models.BooleanField(default = True)
+
+
+

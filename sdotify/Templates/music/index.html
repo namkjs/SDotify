@@ -13,7 +13,8 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">{{song.songName}}</h5>
-                    <h6 class="card-title">Artist - {{song.album.artist.artistName}}</h6>
+                    <a href="/artist/{{song.album.artist.artistName}}" class="card-title">Artist -
+                        {{song.album.artist.artistName}}</a>
                     <p class="card-text">From - {{song.album}}</p>
                     <p class="card-text"><small class="text-muted">Last updated {{song.last_updated | timesince}}
                             ago</small></p>

@@ -12,5 +12,4 @@ urlpatterns = [
     path('information', views.information, name = 'information'),
     path('edit', views.edit, name = 'edit'),
     path('', include('music.urls'))
-
 ]

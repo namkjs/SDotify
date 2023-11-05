@@ -7,6 +7,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', views.index, name ='home'),
     path('search/', views.search_songs, name='search_songs'),
+    path('artist/<str:artist_name>/', views.artist_profile, name='artist_profile'),
+    path('mv', views.mv, name = "mv" )
     # Các URL khác của app2 ở đây
 ]
 if settings.DEBUG:

@@ -44,3 +44,10 @@ class Song(models.Model):
 
     def __str__(self):
         return self.songName
+    
+
+class Video(models.Model):
+    title = models.CharField(max_length=2024)
+    video_id = models.CharField(max_length=200)
+    description = models.TextField()
+    published_date = models.DateTimeField()

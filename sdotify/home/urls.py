@@ -11,5 +11,8 @@ urlpatterns = [
     path('signout', views.signout, name='logout'),
     path('information', views.information, name = 'information'),
     path('edit', views.edit, name = 'edit'),
-    path('', include('music.urls'))
+    path('', include('music.urls')),
+    path('resetpassword', views.reset_password, name = 'rpass'),
+    path('reset/<uidb64>/<token>', views.reset, name='reset'),
+
 ]

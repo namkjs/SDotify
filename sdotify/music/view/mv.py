@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import requests
 from googleapiclient.discovery import build
+from ..models import Song
 
 from ..models import Video
 from django.conf import settings
@@ -13,21 +14,9 @@ def get_youtube_video(video_id):
         return video
     return None
 
-def mv(request):
-    if request.method == 'POST':
-        video_url = request.POST['video_url']
-        video_id = extract_video_id(video_url)
-        video_data = get_youtube_video(video_id)
-        if video_data:
-            video, created = Video.objects.get_or_create(
-                video_id=video_id,
-                defaults={
-                    'title': video_data['snippet']['title'],
-                    'published_date': video_data['snippet']['publishedAt']
-                }
-            )
-        return render(request, 'music/mv.html', {'video': video_data})
-    return render(request, 'music/mv.html')
+def mv(request, song_id):
+    video_data = get_object_or_404(Video, song_id=song_id)
+    return render(request, 'music/mv.html', {'video': video_data})
 
 def extract_video_id(video_url):
     # Lấy video ID từ URL, ví dụ: 'https://www.youtube.com/watch?v=VIDEO_ID'

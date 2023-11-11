@@ -24,11 +24,13 @@ class User(AbstractUser):
     gender = models.IntegerField(default = 0)
     is_active = models.BooleanField(default = False)
     last_login = None
-    is_superuser = models.BooleanField(default = True)
     first_name = None
     last_name = None
     objects = CustomUserManager()
+    is_prenium = models.BooleanField(default = False)
+    is_superuser = models.BooleanField(default = True)
     is_staff = models.BooleanField(default = True)
 
-
-
+class Language(models.Model):
+    language = models.IntegerField(default = 0)
+    User = models.ForeignKey("User", verbose_name=("User Language"), on_delete=models.CASCADE)

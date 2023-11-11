@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sing Up</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/signup1.css' %}">
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'img/logo_spotify.png' %}"> {% endcomment %}
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="signup1">
+        <div class="header">
+            <a href="">
+                <img class="img_spotify" src="{% static 'img/SDOTIFY_logo.png' %}"></img>
+            </a>
+        </div>
+        <div class="body">
+            <div>
+                <p class="body_title">Sign up to start listening</p>
+            </div>
+            <form class="enter_inf" method="post">
+                <div>
+                    <p class="input__title">Email address</p>
+                    <label for="mail"></label>
+                    <input type="text" class="input__mail" id="email" name="email" placeholder="name@domain.com">
+                </div>
+                <div class="use_phone">
+                    <a class="link_use-phone">Use phone number instead.</a>
+                </div>
+                <div>
+                    <button type="submit" class="next_button">
+                        <p class="next">Next</p>
+                    </button>
+                </div>
+            </form>
+            <form class="another_signup">
+                <div>
+                    <p class="or">_________________or_________________</p>
+                </div>
+                <div class="button_another-signup">
+                    <button class="signup_button">
+                        <img class="img_signup" src="{% static 'img/gg_logo.png' %}"></img>
+                        <p class="signup_text">Sign up with Google</p>
+                    </button>
+                    <button class="signup_button">
+                        <img class="img_signup" src="{% static 'img/fb_logo.png' %}"></img>
+                        <p class="signup_text">Sign up with Facebook</p>
+                    </button>
+                </div>
+                <div>
+                    <p class="note">Already have an account? <a class="log">Log in here.</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="footer">
+            <p class="footer_text">The site is protected by reCAPTCHA and the Google <a>Privacy Policy</a> and <a>Terms
+                    of Service</a> apply.</p>
+        </div>
+    </div>
+
+    <script src="" async defer></script>
+</body>
+
+</html>

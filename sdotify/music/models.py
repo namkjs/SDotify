@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from home.models import User
 
 class Artist(models.Model):
     artistName = models.CharField(_("Artist Name"), max_length=50)
@@ -47,7 +48,12 @@ class Song(models.Model):
     
 
 class Video(models.Model):
+    song = models.ForeignKey("Song", verbose_name=_("Video Song"), on_delete=models.CASCADE)
     title = models.CharField(max_length=2024)
     video_id = models.CharField(max_length=200)
-    description = models.TextField()
     published_date = models.DateTimeField()
+
+class Playlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    songs = models.ManyToManyField(Song)
+    playlistName = models.CharField(_("Playlist Name"), max_length=50)

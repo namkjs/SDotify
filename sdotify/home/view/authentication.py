@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from ..models import User
 from django.contrib import messages
 from django.core.mail import EmailMessage, send_mail
-sys.path.append("...")
 from sdotify import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -17,19 +16,21 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
 
+@csrf_exempt
 
 def enter_email(request):
     if request.method == "POST":
         email = request.POST['email']
+        print(email)
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email Already Registered! Please use a different email.")
         else:
             # Email is not registered, proceed to the next step
             request.session['email'] = email  # Store the email in the session
             return redirect('register_user')
-    return render(request, 'authentication/enter_email.html')
+    return render(request, 'authentication/signup1.html')
 
-    
+@csrf_exempt
 def register_user(request):
     if 'email' not in request.session:
         # If email is not in the session, redirect to step 1
@@ -70,7 +71,6 @@ def register_user(request):
             
             'name': myuser.username,
             'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(myuser.pk)),
             'token': generate_token.make_token(myuser)
         })
         email = EmailMessage(
@@ -85,7 +85,7 @@ def register_user(request):
         return redirect('signin')
         
         
-    return render(request, "authentication/signup.html")
+    return render(request, "authentication/signup2.html")
 
 
 def activate(request,uidb64,token):

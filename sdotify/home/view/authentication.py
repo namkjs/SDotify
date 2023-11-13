@@ -71,6 +71,7 @@ def register_user(request):
             
             'name': myuser.username,
             'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(myuser.pk)),
             'token': generate_token.make_token(myuser)
         })
         email = EmailMessage(
@@ -79,6 +80,7 @@ def register_user(request):
         settings.EMAIL_HOST_USER,
         [myuser.email],
         )
+        print(message2)
         email.fail_silently = True
         email.send()
         

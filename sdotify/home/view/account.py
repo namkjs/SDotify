@@ -35,12 +35,12 @@ def edit(request):
 
     return render(request, 'home/edit.html', {'user': request.user})
 @csrf_exempt
-@login_required
 def reset_password(request):
     if request.method == "POST":
         
-        myuser = request.user
         mail = request.POST.get('email')
+        myuser = User.objects.get(email=mail)
+
         email_subject = "Reset your password"
         current_site = get_current_site(request)
 
@@ -75,8 +75,8 @@ def reset(request,uidb64,token):
             pass1 = request.POST.get('pass1')
             pass2 = request.POST.get('pass2')
             if pass1 == pass2:
+                myuser.set_password(pass1)
                 myuser.save()
-
                 return redirect('home')
     else:
         return render(request,'activation_failed.html')

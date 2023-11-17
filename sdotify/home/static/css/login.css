@@ -223,3 +223,7 @@ section .main .last1 {
     color: gray;
     font-size: 10px;
 }
+
+.text-alert {
+    color: white;
+}

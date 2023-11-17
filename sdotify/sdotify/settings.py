@@ -85,14 +85,20 @@ WSGI_APPLICATION = 'sdotify.wsgi.application'
 import os
 from dotenv import load_dotenv
 load_dotenv()
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('NAME'),
+#         'USER': os.environ.get('USER'),
+#         'HOST': os.environ.get('HOST'),
+#         'PASSWORD': os.environ.get('PASSWORD'),
+#         'PORT': os.environ.get('PORT')
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('NAME'),
-        'USER': os.environ.get('USER'),
-        'HOST': os.environ.get('HOST'),
-        'PASSWORD': os.environ.get('PASSWORD'),
-        'PORT': os.environ.get('PORT')
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 # Password validation

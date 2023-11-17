@@ -37,6 +37,11 @@
                     <label for="mail"></label>
                     <input type="text" class="input__mail" id="email" name="email" placeholder="name@domain.com">
                 </div>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="text-alert">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
                 <div class="use_phone">
                     <a class="link_use-phone">Use phone number instead.</a>
                 </div>

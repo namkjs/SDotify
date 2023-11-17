@@ -1,0 +1,18 @@
+<!-- playlist.html -->
+<h2>Existing Playlists:</h2>
+<ul>
+    {% for playlist in playlists %}
+    <a href="{{playlist.userid}}/{{playlist.playlistName}}">{{ playlist.playlistName }}</a>
+    <!-- Thêm nút "Add to this playlist" cho mỗi playlist -->
+    {% endfor %}
+</ul>
+
+<h2>Create New Playlist:</h2>
+<!-- Form để tạo playlist mới -->
+<form method="post">
+    {% csrf_token %}
+    <label for="new_playlist_name">New Playlist Name:</label>
+    <input type="text" id="new_playlist_name" name="new_playlist_name">
+    <input type="hidden" name="song_id" value="{{ song.id }}">
+    <button type="submit">Create New Playlist</button>
+</form>

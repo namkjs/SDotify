@@ -33,14 +33,17 @@
                 <button class="a-c-btn" id="n"><img src="{% static 'img/numberphone (1).png' %}"><span>Continue with
                         numberphone</span></button>
             </div>
-
             <hr>
 
             <div class="log-in">
                 <form method="post">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="text-alert">{{ message }}</div>
+                    {% endfor %}
+                    {% endif %}
                     <label>Email or username</label>
                     <input type="text" placeholder="Email or username" id="username" name="username">
-
                     <label>Password</label>
                     <input type="password" placeholder="Password" id="pass1" name="pass1">
                     <!-- Change type to password for password input -->

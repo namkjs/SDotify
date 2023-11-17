@@ -49,7 +49,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="/playlist">
                         <span class="fa fas fa-plus-square"></span>
                         <span>Create Playlist</span>
                     </a>
@@ -134,7 +134,9 @@
                     <p><a href="/mv/{{song.id}}" class="card-title" style="text-decoration: none; color: inherit;">MV-
                             {{song.songName}}</a></p>
                 </div>
-
+                <form method="post" action="{% url 'add_to_playlist' song.id %}">
+                    {% csrf_token %}
+                </form>
                 <!-- Other playlist items... -->
             </div>
             {% endfor %}
@@ -142,16 +144,6 @@
         </div>
 
         <!-- Other playlist sections... -->
-
-        <div class="preview">
-            <div class="text">
-                <h6>Preview of Spotify</h6>
-                <p>Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.</p>
-            </div>
-            <div class="button">
-                <button type="button">Sign up free</button>
-            </div>
-        </div>
 
         <div class="audio-container">
             <div class="audio-file">

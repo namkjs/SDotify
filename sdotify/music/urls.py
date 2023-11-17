@@ -8,8 +8,12 @@ urlpatterns = [
     path('', views.index, name ='home'),
     path('search/', views.search_songs, name='search_songs'),
     path('artist/<str:artist_name>/', views.artist_profile, name='artist_profile'),
-    path('mv/<int:song_id>/', views.mv, name = "mv" )
-    # Các URL khác của app2 ở đây
+    path('mv/<int:song_id>/', views.mv, name = "mv" ),
+    path('add-to-playlist/<int:song_id>/', views.add_to_playlist_view, name='add_to_playlist'),
+    path('playlists/', views.show_playlists, name='show_playlists'),
+    path('create-new-playlist/', views.create_new_playlist, name='create_new_playlist'),
+
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

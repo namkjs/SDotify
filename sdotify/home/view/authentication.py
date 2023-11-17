@@ -14,20 +14,31 @@ from django.contrib.auth import authenticate, login, logout
 from ..tokens import generate_token
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
 @csrf_exempt
-
 def enter_email(request):
     if request.method == "POST":
         email = request.POST['email']
-        print(email)
+        
+        try:
+            # Validate the email
+            validate_email(email)
+        except ValidationError:
+            # Invalid email format
+            messages.error(request, "This email is invalid. Make sure it's written like example@email.com")
+            return render(request, 'authentication/signup1.html')
+        
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email Already Registered! Please use a different email.")
+            return render(request, 'authentication/signup1.html')
         else:
             # Email is not registered, proceed to the next step
             request.session['email'] = email  # Store the email in the session
             return redirect('register_user')
+    
     return render(request, 'authentication/signup1.html')
 
 @csrf_exempt
@@ -107,24 +118,24 @@ def activate(request,uidb64,token):
     else:
         return render(request,'activation_failed.html')
 
+
 @csrf_exempt
 def signin(request):
     if request.method == 'POST':
         username = request.POST['username']
-        pass1 = request.POST['pass1']
+        password = request.POST['pass1']
         
-        user = authenticate(username=username, password=pass1)
+        user = authenticate(username=username, password=password)
         
         if user is not None:
             login(request, user)
-            fname = user.username
-            # messages.success(request, "Logged In Sucessfully!!")
             return redirect('home')
         else:
-            messages.error(request, "Bad Credentials!!")
+            messages.error(request, "Incorrect username or password. Please try again.")
             return redirect('signin')
     
     return render(request, "authentication/signin.html")
+
 
 
 def signout(request):

@@ -1,12 +1,12 @@
 from django.db import models
-
 # Create your models here.
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from home.models import User
 
+
 class Artist(models.Model):
-    artistName = models.CharField(_("Artist Name"), max_length=50)
+    artistName = models.CharField(_("Artist Name"), max_length=50, unique=True)
     created = models.DateTimeField(_("Artist created date"), auto_now_add=True)
     last_updated = models.DateTimeField(_("Latest artist update"), auto_now=True)
 
@@ -20,7 +20,7 @@ class Artist(models.Model):
 
 class Album(models.Model):
     artist = models.ForeignKey("Artist", verbose_name=_("Artist Album"), on_delete=models.CASCADE)
-    albumName = models.CharField(_("Album Name"), max_length=50)
+    albumName = models.CharField(_("Album Name"), max_length=50, unique = True)
     created = models.DateTimeField(_("Album created date"), auto_now_add=True)
     last_updated = models.DateTimeField(_("Latest album update"), auto_now=True)
 
@@ -35,7 +35,7 @@ class Song(models.Model):
     album = models.ForeignKey("Album", verbose_name=_("Song Album"), on_delete=models.CASCADE)
     songThumbnail = models.ImageField(_("Song Thumbnail"),upload_to='thumbnail/', help_text=".jpg, .png, .jpeg, .gif, .svg supported")
     song = models.FileField(_("Song"), upload_to='songs/', help_text=".mp3 supported only",)
-    songName = models.CharField(_("Song Name"), max_length=50)
+    songName = models.CharField(_("Song Name"), max_length=50, unique = True)
     created = models.DateTimeField(_("Song created date"), auto_now_add=True)
     last_updated = models.DateTimeField(_("Latest song update"), auto_now=True)
 
@@ -56,4 +56,4 @@ class Video(models.Model):
 class Playlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     songs = models.ManyToManyField(Song)
-    playlistName = models.CharField(_("Playlist Name"), max_length=50)
+    playlistName = models.CharField(_("Playlist Name"), max_length=50, unique = True)

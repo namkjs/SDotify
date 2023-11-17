@@ -1,18 +1,188 @@
-<!-- playlist.html -->
-<h2>Existing Playlists:</h2>
-<ul>
-    {% for playlist in playlists %}
-    <a href="{{playlist.userid}}/{{playlist.playlistName}}">{{ playlist.playlistName }}</a>
-    <!-- Thêm nút "Add to this playlist" cho mỗi playlist -->
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
 
-<h2>Create New Playlist:</h2>
-<!-- Form để tạo playlist mới -->
-<form method="post">
-    {% csrf_token %}
-    <label for="new_playlist_name">New Playlist Name:</label>
-    <input type="text" id="new_playlist_name" name="new_playlist_name">
-    <input type="hidden" name="song_id" value="{{ song.id }}">
-    <button type="submit">Create New Playlist</button>
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo">
+            <a href="#">
+                <img src="{% static 'img/SDotify.jpg' %}" alt="Logo" />
+            </a>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="/">
+                        <span class="fa fa-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-search"></span>
+                        <span>Search</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fas fa-book"></span>
+                        <span>Your Library</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="/playlists">
+                        <span class="fa fas fa-plus-square"></span>
+                        <span>Create Playlist</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fas fa-heart"></span>
+                        <span>Liked Songs</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="policies">
+            <ul>
+                <li>
+                    <a href="#">Cookies</a>
+                </li>
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="topbar">
+            <div class="prev-next-buttons">
+                <button type="button" class="fa fas fa-chevron-left"></button>
+                <button type="button" class="fa fas fa-chevron-right"></button>
+            </div>
+            <form class="d-flex small-search-form" role="search" action="{% url 'search_songs' %}">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Artist Album Song" aria-label="Search"
+                    name="search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+            <div class="navbar">
+                <ul>
+                    <li>
+                        <a href="#">Premium</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                    <li>
+                        <a href="#">Download</a>
+                    </li>
+                    <li class="divider">|</li>
+                </ul>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        User <!-- Display the username -->
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="/information">View Profile</a></li>
+                        <li><a class="dropdown-item" href="/edit">Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="/resetpassword">Reset password</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="spotify-playlists">
+            <h2>Playlist{{user.username}}</h2>
+            {% for song in allSongs %}
+
+            <div class="list">
+                <div class="item play-item" data-song-url="{{ song.song.url }}">
+                    <img src="{{song.songThumbnail.url}}" />
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>{{song.songName}}</h4>
+                    <p><a href="/artist/{{song.album.artist.artistName}}" class="card-title"
+                            style="text-decoration: none; color: inherit;">
+                            {{song.album.artist.artistName}}</a></p>
+                    <p><a href="/mv/{{song.id}}" class="card-title" style="text-decoration: none; color: inherit;">MV-
+                            {{song.songName}}</a></p>
+                </div>
+                <form method="post" action="{% url 'add_to_playlist' user.id song.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Add to playlist">
+                </form>
+                <!-- Other playlist items... -->
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- Other playlist sections... -->
+
+        <div class="audio-container">
+            <div class="audio-file">
+                <audio controls id="audioPlayer">
+                    <source src="" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var playButtons = document.querySelectorAll('.play-item .fa-play');
+            var audio = document.querySelector('audio');
+
+            playButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var songUrl = button.closest('.play-item').getAttribute('data-song-url');
+                    audio.src = songUrl;
+                    audio.play();
+                });
+            });
+        });
+    </script>
+    <script>
+        // Add an event listener to the button
+        document.getElementById("loginButton").addEventListener("click", function () {
+            // Redirect to the specified URL
+            window.location.href = "/signin";
+        });
+    </script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

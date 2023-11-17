@@ -49,7 +49,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="/playlist">
+                    <a href="/playlists">
                         <span class="fa fas fa-plus-square"></span>
                         <span>Create Playlist</span>
                     </a>
@@ -134,8 +134,9 @@
                     <p><a href="/mv/{{song.id}}" class="card-title" style="text-decoration: none; color: inherit;">MV-
                             {{song.songName}}</a></p>
                 </div>
-                <form method="post" action="{% url 'add_to_playlist' song.id %}">
+                <form method="post" action="{% url 'add_to_playlist' user.id song.id %}">
                     {% csrf_token %}
+                    <input type="submit" value="Add to playlist">
                 </form>
                 <!-- Other playlist items... -->
             </div>

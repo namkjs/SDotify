@@ -1,18 +1,19 @@
 from django.shortcuts import render
 from django.db.models import Q
 
-from ..models import Song
+from ..models import Song, Playlist
 from django.contrib.auth.decorators import login_required
 
 
 def index(request):
     custom_info = request.custom_info
+    user_id = request.user.id
+    playlists = Playlist.objects.filter(user_id=user_id)
     allSongs = Song.objects.all().order_by('-last_updated')
-    print(custom_info)
     if custom_info == 1:
-        return render(request, 'music/home.html',context={"allSongs" : allSongs})
+        return render(request, 'music/home.html',context={"allSongs" : allSongs, "id": user_id})
     else:
-        return render(request, 'music/index.html', context={"allSongs" : allSongs})
+        return render(request, 'music/index.html', context={"allSongs" : allSongs, "playlist":playlists})
 
 def search_songs(request): 
     template_path = 'music/search_result.html'

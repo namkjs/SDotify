@@ -85,22 +85,22 @@ WSGI_APPLICATION = 'sdotify.wsgi.application'
 import os
 from dotenv import load_dotenv
 load_dotenv()
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.environ.get('NAME'),
-#         'USER': os.environ.get('USER'),
-#         'HOST': os.environ.get('HOST'),
-#         'PASSWORD': os.environ.get('PASSWORD'),
-#         'PORT': os.environ.get('PORT')
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('NAME'),
+        'USER': os.environ.get('USER'),
+        'HOST': os.environ.get('HOST'),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'PORT': os.environ.get('PORT')
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -145,5 +145,5 @@ AUTH_USER_MODEL = 'home.User'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-DATE_FORMAT = 'Y-m-d'
+DATE_FORMAT = 'd-m-Y'
 CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']

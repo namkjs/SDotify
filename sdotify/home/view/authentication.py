@@ -91,10 +91,8 @@ def register_user(request):
         settings.EMAIL_HOST_USER,
         [myuser.email],
         )
-        print(message2)
         email.fail_silently = True
         email.send()
-        
         return redirect('signin')
         
         

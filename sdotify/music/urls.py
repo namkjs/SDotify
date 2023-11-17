@@ -9,9 +9,8 @@ urlpatterns = [
     path('search/', views.search_songs, name='search_songs'),
     path('artist/<str:artist_name>/', views.artist_profile, name='artist_profile'),
     path('mv/<int:song_id>/', views.mv, name = "mv" ),
-    path('add-to-playlist/<int:song_id>/', views.add_to_playlist_view, name='add_to_playlist'),
-    path('playlists/', views.show_playlists, name='show_playlists'),
-    path('create-new-playlist/', views.create_new_playlist, name='create_new_playlist'),
+    path('add-to-playlist/<int:user_id>/<int:song_id>/', views.add_to_playlist_view, name='add_to_playlist'),
+    path('playlists/<int:user_id>', views.show_music, name='showmusic'),
 
 
 ]

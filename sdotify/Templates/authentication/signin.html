@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SDotify</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'home' %}"> <!-- Assuming you have a URL named 'index' -->
+                <img src="{% static 'img/SDotify.jpg' %}">
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <div class="main">
+            <h1>Log in to SDotify</h1>
+
+            <div class="account-connect">
+                <button class="a-c-btn" id="g"><img src="{% static 'img/google.png' %}"><span>Continue
+                        with Google</span></button>
+                <button class="a-c-btn" id="f"><img src="{% static 'img/facebook.png' %}"><span>Continue
+                        with Google</span></button>
+                <button class="a-c-btn" id="a"><img src="{% static 'img/apple.png' %}"><span>Continue
+                        with Google</span></button>
+                <button class="a-c-btn" id="n"><img src="{% static 'img/numberphone (1).png' %}"><span>Continue with
+                        numberphone</span></button>
+            </div>
+            <hr>
+
+            <div class="log-in">
+                <form method="post">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="text-alert">{{ message }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    <label>Email or username</label>
+                    <input type="text" placeholder="Email or username" id="username" name="username">
+                    <label>Password</label>
+                    <input type="password" placeholder="Password" id="pass1" name="pass1">
+                    <!-- Change type to password for password input -->
+
+                    <div class="switch">
+                        <input type="checkbox" id="checked" style="display: none;">
+                        <label for="checked" checked></label>
+                        <span>Remember me</span>
+                    </div>
+
+                    <button type="submit">Log In</button>
+
+                    <a href="/resetpassword">Forgot your Password?</a>
+                </form>
+            </div>
+
+            <hr>
+            <div class="last">
+                <span>Don't you have an account</span>
+                <a href="/signup">Sign up for SDotify</a>
+            </div>
+
+            <div class="last1">
+                <span>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service
+                    apply.</span>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+</html>

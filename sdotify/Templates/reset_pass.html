@@ -1,0 +1,16 @@
+{% autoescape off %}
+
+Hello.
+
+No need to worry, you can reset your Spotify password by clicking the link below:
+http://{{ domain }}{% url 'reset' uidb64=uid token=token %}
+Reset password
+
+Your username is: {{username}}
+
+If you didn't request a password reset, feel free to delete this email and carry on enjoying your music!
+
+All the best,
+The Spotify Team
+
+{% endautoescape %}

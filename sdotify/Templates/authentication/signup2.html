@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign Up - SDOTIFY</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/signup2.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header__sign-up">
+            <a class="spotify" href="">
+                <img class="logo__spotify" src="{%static 'img/SDOTIFY_logo.png'%}" alt="">
+            </a>
+        </div>
+        <div class="body__sign-up">
+            <form class="body__left" method="post">
+                <div>
+                    <h3>Create your account!</h3>
+                </div>
+                <div class="enter__information">
+                    <div>
+                        <p class="input__title">Username</p>
+                        <label for="username"></label>
+                        <input type="text" class="enter__inf" id="username" name="username"
+                            placeholder="Create A Username">
+                        <p class="describe">This name will appear on your profile</p>
+                    </div>
+                    <div>
+                        <p class="input__title">Password</p>
+                        <label for="pass1"></label>
+                        <input type="password" class="enter__inf" id="pass1" name="pass1"
+                            placeholder="Create Your Password">
+                        <p class="describe">The password must contain at least 8 characters. We recommend including at
+                            least 1 number and 1 special character.</p>
+                    </div>
+                    <div>
+                        <p class="input__title">Confirm Password</p>
+                        <label for="pass2"></label>
+                        <input type="password" class="enter__inf" id="pass2" name="pass2"
+                            placeholder="Confirm Your Password">
+                    </div>
+                    <div>
+                        <p class="input__title">Phone Number</p>
+                        <label for="pass2"></label>
+                        <input type="password" class="enter__inf" id="phone_number" name="phone_number"
+                            placeholder="Phone number">
+                    </div>
+                    <div>
+                        <p class="input__title">DOB</p>
+                        <label for="pass2"></label>
+                        <input type="password" class="enter__inf" id="dob" name="dob" placeholder="YYYY-MM-DD">
+                    </div>
+                    <div class="gender">
+                        <p class="input__title">Gender</p>
+                        <p class="describe">We use your gender to help personalize our content recommendations and ads
+                            for you</p>
+                        <!-- <input type="radio" class="enter__gender"> Man
+                                <input type="radio" class="enter__gender"> Woman
+                                <input type="radio" class="enter__gender"> Non-binary
+                                <input type="radio" class="enter__gender"> Something else
+                                <input type="radio" class="enter__gender" style="background-color: black;"> Prefer not to say -->
+                        <select name="" id="" aria-label="Select gender">
+                            <option value="">Man</option>
+                            <option value="">Woman</option>
+                            <option value="">Non-binary</option>
+                            <option value="">Something else</option>
+                            <option value="">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button class="Sign__up-button" type="submit">
+                            <p class="button__content">Sign up</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="footer__sign-up">
+                    This site is protected by reCAPTCHA and the <a href="" class="footer__text">Google Privacy
+                        Policy</a> and <a href="" class="footer__text">Terms of
+                        Service</a> apply.
+                </div>
+            </form>
+            <div class="body__right">
+                <img class="img__DTH" src="{% static 'img/SDOTIFY.png'%}" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="" async defer></script>
+</body>
+
+</html>

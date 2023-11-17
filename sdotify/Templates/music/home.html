@@ -119,28 +119,32 @@
 
         <div class="spotify-playlists">
             <h2>SDotify Song</h2>
-            {% for song in allSongs %}
 
-            <div class="list">
-                <div class="item play-item" data-song-url="{{ song.song.url }}">
-                    <img src="{{song.songThumbnail.url}}" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
+            <div class="view_spotify-playlists">
+                {% for song in allSongs %}
+                <div class="list">
+                    <div class="item play-item" data-song-url="{{ song.song.url }}">
+                        <img src="{{song.songThumbnail.url}}" />
+                        <div class="play">
+                            <span class="fa fa-play"></span>
+                        </div>
+                        <h4>{{song.songName}}</h4>
+                        <p><a href="/artist/{{song.album.artist.artistName}}" class="card-title"
+                                style="text-decoration: none; color: inherit;">
+                                {{song.album.artist.artistName}}</a></p>
+                        <p><a href="/mv/{{song.id}}" class="card-title"
+                                style="text-decoration: none; color: inherit;">MV-
+                                {{song.songName}}</a></p>
                     </div>
-                    <h4>{{song.songName}}</h4>
-                    <p><a href="/artist/{{song.album.artist.artistName}}" class="card-title"
-                            style="text-decoration: none; color: inherit;">
-                            {{song.album.artist.artistName}}</a></p>
-                    <p><a href="/mv/{{song.id}}" class="card-title" style="text-decoration: none; color: inherit;">MV-
-                            {{song.songName}}</a></p>
+                    <form method="post" action="{% url 'add_to_playlist' user.id song.id %}">
+                        {% csrf_token %}
+                        <input type="submit" value="Add to playlist">
+                    </form>
+                    <!-- Other playlist items... -->
                 </div>
-                <form method="post" action="{% url 'add_to_playlist' user.id song.id %}">
-                    {% csrf_token %}
-                    <input type="submit" value="Add to playlist">
-                </form>
-                <!-- Other playlist items... -->
+                {% endfor %}
             </div>
-            {% endfor %}
+
 
         </div>
 

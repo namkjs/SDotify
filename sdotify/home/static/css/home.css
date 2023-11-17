@@ -170,6 +170,11 @@ body {
     padding: 20px 40px;
 }
 
+.view_spotify-playlists {
+    display: flex;
+    flex-direction: row;
+}
+
 .spotify-playlists h2 {
     color: #ffffff;
     font-size: 22px;
